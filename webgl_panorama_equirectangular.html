@@ -29,8 +29,8 @@
 		</style>
 	</head>
 	<body>
-
 		<div id="container"></div>
+		<!--canvas height="600" width="800" id="cv"></canvas-->
 		<!--div id="info">
 			<a href="http://threejs.org" target="_blank">three.js webgl</a> - equirectangular panorama demo. photo
  by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank">Jón Ragnarsson<
@@ -133,8 +133,11 @@
 			function onKeyDown(event)
 			{
 				//alert(event.keyCode);
-				if (event.keyCode==13)//左
+				if (event.keyCode==13)//enter
 					fun_enter();
+				else 
+				if (event.keyCode==32)//space
+					fun_space();
 				else 
 				if (event.keyCode==37)//左
 					fun_a();
@@ -161,7 +164,14 @@
 				
 				scene.add( mesh );
 			}
+			function fun_space() {
 			
+				//var mycv1 = document.getElementById("cv");  
+				var mycv = renderer.domElement;  
+				
+				var myctx = mycv.getContext("2d");
+				
+			}
 			function fun_a(){
 				//window.alert('你按下了左')
 			}
