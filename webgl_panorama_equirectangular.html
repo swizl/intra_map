@@ -31,14 +31,14 @@
 	<body>
 
 		<div id="container"></div>
-		<div id="info">
+		<!--div id="info">
 			<a href="http://threejs.org" target="_blank">three.js webgl</a> - equirectangular panorama demo. photo
  by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank">Jón Ragnarsson<
 /a>.<br />
 			drag equirectangular texture into the page.
-		</div>
+		</div-->
 
-		<script src="./build/three.min.js"></script>
+		<script src="./build/three.js"></script>
 
 		<script>
 
@@ -68,7 +68,7 @@
 				geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, 1, 1 ) );
 
 				var material = new THREE.MeshBasicMaterial( {
-					map: THREE.ImageUtils.loadTexture( 'textures/2294472375_24a3b8ef46_o.jpg' )
+					map: THREE.ImageUtils.loadTexture( 'textures/Redocn_2010090201594197.jpg' )
 				} );
 
 				mesh = new THREE.Mesh( geometry, material );
@@ -85,7 +85,7 @@
 				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 				document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
 				document.addEventListener( 'DOMMouseScroll', onDocumentMouseWheel, false);
-
+				document.addEventListener( 'keydown', onKeyDown, false); 
 				//
 
 				document.addEventListener( 'dragover', function ( event ) {
@@ -128,6 +128,54 @@
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
+			}
+			
+			function onKeyDown(event)
+			{
+				//alert(event.keyCode);
+				if (event.keyCode==13)//左
+					fun_enter();
+				else 
+				if (event.keyCode==37)//左
+					fun_a();
+				else 
+				if (event.keyCode==38)//上
+					fun_b();
+				else 
+				if (event.keyCode==39)//右
+					fun_c();
+				else 
+				if (event.keyCode==40)//下
+					fun_d();
+			}
+			function fun_enter() {
+				var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+				geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, 1, 1 ) );
+				
+				var material = new THREE.MeshBasicMaterial( {
+					map: THREE.ImageUtils.loadTexture( 'textures/Redocn_2010090202075435.jpg' )
+				} );
+
+				//scene.delete( mesh );
+				var mesh = new THREE.Mesh( geometry, material );
+				
+				scene.add( mesh );
+			}
+			
+			function fun_a(){
+				//window.alert('你按下了左')
+			}
+
+			function fun_b(){
+				//window.alert('你按下了上')
+			}
+
+			function fun_c(){
+				//window.alert('你按下了右')
+			}
+
+			function fun_d(){
+				//window.alert('你按下了下')
 			}
 
 			function onWindowResize() {
@@ -204,12 +252,9 @@
 			}
 
 			function update() {
-
-				if ( isUserInteracting === false ) {
-
-					lon += 0.1;
-
-				}
+				//if ( isUserInteracting === false ) {
+				//	lon += 0.1;
+				//}
 
 				lat = Math.max( - 85, Math.min( 85, lat ) );
 				phi = THREE.Math.degToRad( 90 - lat );
