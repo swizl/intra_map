@@ -170,7 +170,13 @@
 				var mycv = renderer.domElement;  
 				
 				var myctx = mycv.getContext("2d");
-				
+				var canvasData = myctx.getImageData(0, 0, mycv.width, mycv.height);  
+				// Processing all the pixels  
+				//gfilter.diaokeProcess(myctx, canvasData);  
+
+				// Copying back canvas data to canvas  
+				myctx.putImageData(canvasData, 0, 0);  
+	
 			}
 			function fun_a(){
 				//window.alert('你按下了左')
